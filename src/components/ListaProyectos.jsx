@@ -51,14 +51,12 @@ const ListaProyectos = () => {
             proyectoService.obtenerProyectos());
     };
 
-    const proyectosFiltrados = proyectos.filter(proyecto =>
-        proyecto.titulo.toLowerCase().includes(busqueda.toLowerCase())
-    );
+    const proyectosFiltrados = proyectoService.buscarProyecto(busqueda);
 
     return (
         <>
-            <div class="container-form">
-                <form class="form-Proyectos"onSubmit={manejarEnvio}>
+            <div className="container-form">
+                <form className="form-Proyectos"onSubmit={manejarEnvio}>
                     <input 
                         type="text" 
                         name="titulo"
@@ -86,7 +84,7 @@ const ListaProyectos = () => {
 
                     <button type="submit">Agregar Proyecto</button>
                 </form>
-                <div class ="buscador">
+                <div className="buscador">
                     <input 
                     type="text" 
                     placeholder="Buscar por título"
