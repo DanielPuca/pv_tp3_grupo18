@@ -1,14 +1,13 @@
 import { useState } from "react";
 import proyectoService from "../services/proyectoService";
 import FormProyecto from "./FormProyecto";
-
+import ProyectoCard from "./ProyectoCard";
 const ListaProyectos = () => {
 
     const [proyectos, setProyectos] = useState(
         proyectoService.obtenerProyectos()
     );
     const [busqueda, setBusqueda] = useState("");
-
     const manejarEnvio = (nuevoProyecto) => {
         proyectoService.agregarProyecto(nuevoProyecto);
         setProyectos(proyectoService.obtenerProyectos());
@@ -20,9 +19,11 @@ const ListaProyectos = () => {
         setProyectos(
             proyectoService.obtenerProyectos());
     };
-
+    const verDetalleProyecto = (proyecto) => {
+         console.log("Proyecto seleccionado:", proyecto);
+    };
     const proyectosFiltrados = proyectos.filter((proyecto) =>
-    proyecto.titulo.toLowerCase().includes(busqueda.toLowerCase())
+         proyecto.titulo.toLowerCase().includes(busqueda.toLowerCase())
     );
 
     return (
@@ -38,18 +39,20 @@ const ListaProyectos = () => {
                 />
             </div>
 
-            <section>
+            <section className="lista-proyectos">
                 <h2>Listado de Proyectos</h2>
+                <div className="contenedor-cards">
                 {
                    proyectosFiltrados.map((proyecto) => (
-                        <article key={proyecto.id}>
-                            <h3>{proyecto.titulo}</h3>
-                            <p>Categoría: {proyecto.categoria}</p>
-                            <p>Estado: {proyecto.estado}</p>
-                            <button onClick={() => eliminarProyecto(proyecto.id)}>Eliminar</button>
-                        </article>
+                        <ProyectoCard
+                           key={proyecto.id}
+                           proyecto={proyecto}
+                           eliminarProyecto={eliminarProyecto}
+                           verDetalleProyecto={verDetalleProyecto}
+                        />
                     ))
                 }
+                </div>
             </section>
         </>
     );
