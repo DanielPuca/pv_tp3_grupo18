@@ -5,7 +5,7 @@ const DetalleProyecto = ({ proyecto }) =>{
     if (!proyecto) return null;
 
     return(
-        <div>
+        <div className="contenedor-detalles">
             <section>
                 <h2>Detalles del proyecto</h2>
                 <p><strong>Descripcion: </strong>{ proyecto.descripcion || 'Sin detalle' }</p>
@@ -20,7 +20,6 @@ const DetalleProyecto = ({ proyecto }) =>{
             </section>
             <section>
                 <h2>Integrantes y roles</h2>
-
                 <ul>
                     {proyecto.equipo.map((eq)=>(
                         <li>{eq.nombre} - {eq.rol}</li>

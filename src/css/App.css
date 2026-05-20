@@ -231,3 +231,20 @@ footer {
     grid-template-columns: repeat(4, 1fr);
     gap: 20px;
 }
+
+.contenedor-detalles{
+    background-color: var(--color-section);
+    padding: 30px;
+    margin: 20px;
+    border-radius: 10px;
+}
+.contenedor-detalles h2{
+    color: var(--color-texto);
+    margin-bottom: 20px;
+}
+.contenedor-detalles section{
+    margin-bottom: 20px;
+}
+.contenedor-detalles ul {
+    list-style: none;
+}
