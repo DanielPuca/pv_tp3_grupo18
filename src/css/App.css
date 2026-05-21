@@ -69,7 +69,7 @@ main {
     gap: 10px;
 }
 /*Mejoro para que se vea mejor visualmente*/
-.form-Proyectos input,
+.form-Proyectos input, textarea,
 .buscador input {
     padding: 10px;
     border: 1px solid #ccc;

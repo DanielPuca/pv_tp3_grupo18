@@ -4,7 +4,8 @@ const FormProyecto = ({ agregarProyecto }) => {
     const [proyectoFormulario, setProyectoFormulario] = useState({
         titulo: "",
         categoria: "",
-        estado: ""
+        estado: "",
+        descripcion: ""
     });
 
     const manejarCambio = (evento)=> {
@@ -29,7 +30,8 @@ const FormProyecto = ({ agregarProyecto }) => {
         setProyectoFormulario({
             titulo: "",
             categoria: "",
-            estado: ""
+            estado: "",
+            descripcion: ""
         });
     };
     return (
@@ -59,6 +61,14 @@ const FormProyecto = ({ agregarProyecto }) => {
                         onChange={manejarCambio}
                         required
                     />
+                    <textarea 
+                        name="descripcion"
+                        placeholder= "Descripcion del proyecto"
+                        value={proyectoFormulario.descripcion}                    
+                        onChange={manejarCambio}
+                        required
+                    />
+
 
                     <button type="submit">Agregar Proyecto</button>
                 </form>

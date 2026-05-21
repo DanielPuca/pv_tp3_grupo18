@@ -12,19 +12,28 @@ const DetalleProyecto = ({ proyecto }) =>{
             </section>
             <section>
                 <h2>Recursos Utilizados</h2>
-                <ul>
-                    {proyecto.recursos.map((r)=>(
-                        <li>{r.nombre}</li>
-                    ))}
-                </ul>
+
+                {proyecto.recursos && proyecto.recursos.length > 0 ? (
+                    <ul>
+                        {proyecto.recursos.map((r)=>(
+                            <li>{r.nombre}</li>
+                        ))}
+                    </ul>
+                ) : (
+                    <p>Sin recursos</p>
+                )}
             </section>
             <section>
                 <h2>Integrantes y roles</h2>
-                <ul>
-                    {proyecto.equipo.map((eq)=>(
-                        <li>{eq.nombre} - {eq.rol}</li>
-                    ))}
-                </ul>
+                    {proyecto.equipo && proyecto.equipo.length > 0 ? (
+                        <ul>    
+                            {proyecto.equipo.map((eq)=>(
+                                <li>{eq.nombre} - {eq.rol}</li>
+                            ))}
+                        </ul>
+                    ) : (
+                    <p>Sin Integrantes</p>
+                )}
             </section>
         </div>
     );
