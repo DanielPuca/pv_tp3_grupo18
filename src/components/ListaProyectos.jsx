@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { useEffect,useRef, useState } from "react";
 import proyectoService from "../services/proyectoService";
 import FormProyecto from "./FormProyecto";
 import ProyectoCard from "./ProyectoCard";
 import DetalleProyecto from "./DetalleProyecto";
+import RegistroActividad from "./RegistroActividad";
 const ListaProyectos = () => {
 
     const [proyectos, setProyectos] = useState(
@@ -12,21 +13,36 @@ const ListaProyectos = () => {
     const [proyectoSeleccionado, setProyectoSeleccionado] = useState(null);
 
     const [busqueda, setBusqueda] = useState("");
+    const [ultimaActualizacion, setUltimaActualizacion] = useState(null);
+   const huboModificacion = useRef(false);
 
+    useEffect(() => {
+        if (huboModificacion.current) {
+        setUltimaActualizacion(new Date());
+        huboModificacion.current = false;
+        }
+    }, [proyectos]);
+   
     const manejarEnvio = (nuevoProyecto) => {
         proyectoService.agregarProyecto(nuevoProyecto);
-        setProyectos(proyectoService.obtenerProyectos());
+        huboModificacion.current = true;
+        setProyectos((proyectosPrevios) => [
+        ...proyectosPrevios,
+        nuevoProyecto
+        ]);
     };  
 
     const eliminarProyecto = (id) => {
         
         proyectoService.eliminarProyecto(id);
-        setProyectos(
-            proyectoService.obtenerProyectos());
+        huboModificacion.current = true;
+        setProyectos((proyectosPrevios) =>
+            proyectosPrevios.filter((proyecto) => proyecto.id !== id)
+        );
     };
     const verDetalleProyecto = (proyecto) => {
         setProyectoSeleccionado(proyecto);
-         console.log("Proyecto seleccionado:", proyecto); //esto no va
+        // console.log("Proyecto seleccionado:", proyecto); //esto no va
     };
 
     const proyectosFiltrados = proyectos.filter((proyecto) =>
@@ -63,6 +79,7 @@ const ListaProyectos = () => {
             </section>
 
             <DetalleProyecto proyecto={ proyectoSeleccionado }/>
+            <RegistroActividad fechaActualizacion={ultimaActualizacion} />
         </>
     );
 
