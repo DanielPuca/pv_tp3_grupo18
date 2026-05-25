@@ -54,6 +54,7 @@ const ListaProyectos = () => {
             <FormProyecto agregarProyecto={manejarEnvio} />
 
             <div className="buscador">
+                <h2>Buscar Proyectos:</h2>
                 <input 
                     type="text" 
                     placeholder="Buscar por título"
