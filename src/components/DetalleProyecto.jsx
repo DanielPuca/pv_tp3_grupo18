@@ -15,8 +15,14 @@ const DetalleProyecto = ({ proyecto }) =>{
 
                 {proyecto.recursos && proyecto.recursos.length > 0 ? (
                     <ul>
-                        {proyecto.recursos.map((r)=>(
-                            <li>{r.nombre}</li>
+                        {proyecto.recursos.map((r, index)=>(
+                            <li key={index}>
+                                <h2>Recurso {index + 1}:</h2>
+                                <p><strong>Nombre: </strong>{r.nombre}</p>
+                                <p><strong>URL: </strong>{r.url}</p>
+                                <p><strong>Estado: </strong>{r.estado}</p>
+                                <br />
+                            </li>
                         ))}
                     </ul>
                 ) : (
@@ -27,8 +33,9 @@ const DetalleProyecto = ({ proyecto }) =>{
                 <h2>Integrantes y roles</h2>
                     {proyecto.equipo && proyecto.equipo.length > 0 ? (
                         <ul>    
-                            {proyecto.equipo.map((eq)=>(
-                                <li>{eq.nombre} - {eq.rol}</li>
+                            {proyecto.equipo.map((eq, index)=>(
+                                <li key={index}>
+                                    <strong>Nombre:</strong> {eq.nombre} - <strong>Rol:</strong> {eq.rol}</li>           
                             ))}
                         </ul>
                     ) : (

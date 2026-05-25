@@ -217,8 +217,21 @@ footer {
 /* MARGEN LATERAL PARA BUSCADOR Y LISTADO */
 
 .buscador {
-    padding-left: 20px;
-    padding-right: 20px;
+     width: 900px;
+    margin: 30px auto 20px auto;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+.input-buscador {
+    flex: 1;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    font-size: 16px;
+}
+.buscador h2 {
+    margin-bottom: 10px;
 }
 
 .lista-proyectos {
@@ -247,4 +260,47 @@ footer {
 }
 .contenedor-detalles ul {
     list-style: none;
+}
+.container-form {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+.container-form h2, .buscador h2 {
+    color: var(--color-texto);
+}
+.form-Proyectos {
+    width: 900px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+.info-form,
+.descripcion-form,
+.recursos-form,
+.equipo-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+
+    background-color: var(--color-section);
+}
+.descripcion-form textarea {
+    height: 100%;
+    min-height: 180px;
+}
+.check-disponible {
+    margin-top: 10px;
+}
+.boton-agregar {
+    grid-column: span 2;
+    width: 400px;
+    margin: auto;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
 }
