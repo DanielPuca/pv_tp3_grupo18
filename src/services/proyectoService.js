@@ -5,6 +5,7 @@ const proyectoService = (() => {
       titulo: "Sistema Escolar",
       categoria: "Web",
       estado: "En curso",
+      disponible: true,
       descripcion: "El Sistema Escolar es una aplicación web pensada para organizar la información académica de una institución educativa. Este proyecto permite representar datos relacionados con alumnos, materias, cursos y gestión general.",
       recursos: [
         { nombre: "PDF", url: "#", estado: "Pendiente" },
@@ -22,6 +23,7 @@ const proyectoService = (() => {
       titulo: "Base de Datos Hospital",
       categoria: "Base de Datos",
       estado: "En curso",
+      disponible: true,
       descripcion: "Este proyecto representa una base de datos orientada a la gestión de información hospitalaria. Incluye datos relacionados con pacientes, turnos, médicos y áreas de atención.",
       recursos: [
         { nombre: "PDF", url: "#", estado: "Pendiente" },
@@ -39,6 +41,7 @@ const proyectoService = (() => {
       titulo: "Simulador de Cajero Automático",
       categoria: "Programación",
       estado: "Finalizado",
+      disponible: true,
       descripcion: "El Simulador de Cajero Automático representa operaciones básicas como consultar saldo, extraer dinero y depositar. Su objetivo es practicar estructuras de control, validaciones y organización lógica de un programa.",
       recursos: [
         { nombre: "PDF", url: "#", estado: "Pendiente" },
@@ -56,6 +59,7 @@ const proyectoService = (() => {
       titulo: "Sistema de Ventas",
       categoria: "Web",
       estado: "En curso",
+      disponible: true,
       descripcion: "El Sistema de Ventas es una aplicación pensada para registrar productos, clientes y operaciones comerciales. Este desarrollo permite aplicar componentes reutilizables en React y separar la vista general del detalle.",
       recursos: [
         { nombre: "PDF", url: "#", estado: "Pendiente" },
@@ -73,6 +77,7 @@ const proyectoService = (() => {
       titulo: "Gestión Académica",
       categoria: "Base de Datos",
       estado: "Finalizado",
+      disponible: true,
       descripcion: "Gestión Académica es un proyecto orientado a administrar información vinculada a estudiantes, materias y docentes. La finalidad es organizar los datos de forma clara y permitir que cada proyecto tenga una vista resumida y una vista detallada.",
       recursos: [
         { nombre: "PDF", url: "#", estado: "Pendiente" },
@@ -88,7 +93,7 @@ const proyectoService = (() => {
   ];
 
   const obtenerProyectos = () => {
-    return [...proyectos];
+    return proyectos.filter((proyecto) => proyecto.disponible !== false);
   };
 
   const agregarProyecto = (nuevoProyecto) => {
@@ -96,7 +101,10 @@ const proyectoService = (() => {
   };
 
   const eliminarProyecto = (id) => {
-    proyectos = proyectos.filter((proyecto) => proyecto.id !== id);
+    const proyecto = proyectos.find((proyecto) => proyecto.id === id);
+      if (proyecto) {
+        proyecto.disponible = false;
+      }
   };
 
   const buscarProyecto = (texto) => {
