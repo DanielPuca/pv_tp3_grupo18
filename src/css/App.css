@@ -304,8 +304,27 @@ footer {
     border-radius: 8px;
     cursor: pointer;
 }
+.recurso-item {
+    background-color: var(--color-fondo);
+    border-left: 4px solid var(--color-principal);
+    border-radius: 5px;
+    padding: 10px 15px;
+    margin-bottom: 10px;
+}
+
+.recurso-item p {
+    margin-bottom: 4px;
+}
+.integrante-item {
+    background-color: var(--color-fondo);
+    border-left: 4px solid var(--color-menu);
+    border-radius: 5px;
+    padding: 10px 15px;
+    margin-bottom: 10px;
+}
 .registro-actividad {
     background-color: var(--color-section);
     padding: 20px;
     margin: 20px;
+    font-style: italic;
 }
