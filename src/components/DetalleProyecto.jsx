@@ -1,6 +1,6 @@
 
 
-const DetalleProyecto = ({ proyecto }) =>{
+const DetalleProyecto = ({ proyecto, onVolver }) =>{
 
     if (!proyecto) return null;
 
@@ -42,6 +42,7 @@ const DetalleProyecto = ({ proyecto }) =>{
                     <p>Sin Integrantes</p>
                 )}
             </section>
+            <button onClick={onVolver}>Volver</button>
         </div>
     );
 }
