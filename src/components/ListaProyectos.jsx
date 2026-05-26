@@ -79,7 +79,10 @@ const ListaProyectos = () => {
                 </div>
             </section>
 
-            <DetalleProyecto proyecto={ proyectoSeleccionado }/>
+            <DetalleProyecto 
+            proyecto={ proyectoSeleccionado }
+            onVolver={() => setProyectoSeleccionado(null)}
+            />
             <RegistroActividad fechaActualizacion={ultimaActualizacion} />
         </>
     );
