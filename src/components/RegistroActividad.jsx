@@ -1,12 +1,21 @@
 const RegistroActividad = ({ fechaActualizacion }) => {
+
     if (!fechaActualizacion) {
         return null;
     }
-//falta completar el mensaje y ya quedo importada en listaProyectos
+
+    const fecha = fechaActualizacion.toLocaleDateString("es-AR");
+    const hora = fechaActualizacion.toLocaleTimeString("es-AR", {
+        hour : "2-digit",
+        minute : "2-digit",
+        hour12 : false
+    });
+
+
     return (
-        /*falta hacer formato*/
+        
         <div className="registro-actividad">
-            <p>Registro de actividad pendiente de formato</p>   
+            <p>Ultima Actualizacion de la lista: {fecha} a las {hora} hs.</p> 
         </div>
     );
 };
