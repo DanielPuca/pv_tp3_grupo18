@@ -304,3 +304,8 @@ footer {
     border-radius: 8px;
     cursor: pointer;
 }
+.registro-actividad {
+    background-color: var(--color-section);
+    padding: 20px;
+    margin: 20px;
+}
