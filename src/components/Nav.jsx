@@ -1,12 +1,20 @@
+import { NavLink } from 'react-router-dom'
 const Nav = () => {
     return (
 
             <nav>
                 <ul className="menu">
-                    <li><a href="#">Inicio</a></li>
-                    <li><a href="#">Proyectos</a></li>
-                    <li><a href="#">Detalles</a></li>
-                    <li><a href="#">Perfil</a></li>
+                    <li> 
+                        <NavLink to="/dashboard">Inicio</NavLink>
+                    </li>
+                    
+                    <li>
+                        <NavLink to="/proyectos">Proyectos</NavLink>
+                    </li>
+
+                    <li>
+                        <NavLink to="/perfil">Perfil</NavLink>
+                    </li>
                 </ul>
             </nav>
 

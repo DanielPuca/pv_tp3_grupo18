@@ -1,4 +1,5 @@
-const ProyectoCard = ({ proyecto, eliminarProyecto, verDetalleProyecto }) => {
+import { Link } from "react-router-dom";
+const ProyectoCard = ({ proyecto, eliminarProyecto }) => {
 
     const { id, titulo, categoria, estado } = proyecto;
 
@@ -15,9 +16,9 @@ const ProyectoCard = ({ proyecto, eliminarProyecto, verDetalleProyecto }) => {
             </p>
 
             <div className="botones-proyecto">
-                <button onClick={() => verDetalleProyecto(proyecto)}>
-                    Detalles
-                </button>
+               <Link to={`/proyectos/${id}`}>
+                    <button>Detalles</button>
+               </Link>
 
                 <button onClick={() => eliminarProyecto(id)}>
                     Eliminar

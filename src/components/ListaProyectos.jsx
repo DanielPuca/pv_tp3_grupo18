@@ -2,15 +2,13 @@ import { useEffect,useRef, useState } from "react";
 import proyectoService from "../services/proyectoService";
 import FormProyecto from "./FormProyecto";
 import ProyectoCard from "./ProyectoCard";
-import DetalleProyecto from "./DetalleProyecto";
 import RegistroActividad from "./RegistroActividad";
+
 const ListaProyectos = () => {
 
     const [proyectos, setProyectos] = useState(
         proyectoService.obtenerProyectos()
     );
-
-    const [proyectoSeleccionado, setProyectoSeleccionado] = useState(null);
 
     const [busqueda, setBusqueda] = useState("");
     const [ultimaActualizacion, setUltimaActualizacion] = useState(null);
@@ -40,11 +38,7 @@ const ListaProyectos = () => {
             proyectosPrevios.filter((proyecto) => proyecto.id !== id)
         );
     };
-    const verDetalleProyecto = (proyecto) => {
-        setProyectoSeleccionado(proyecto);
-        // console.log("Proyecto seleccionado:", proyecto); //esto no va
-    };
-
+   
     const proyectosFiltrados = proyectos.filter((proyecto) =>
          proyecto.titulo.toLowerCase().includes(busqueda.toLowerCase())
     );
@@ -72,17 +66,12 @@ const ListaProyectos = () => {
                            key={proyecto.id}
                            proyecto={proyecto}
                            eliminarProyecto={eliminarProyecto}
-                           verDetalleProyecto={verDetalleProyecto}
                         />
                     ))
                 }
                 </div>
             </section>
 
-            <DetalleProyecto 
-            proyecto={ proyectoSeleccionado }
-            onVolver={() => setProyectoSeleccionado(null)}
-            />
             <RegistroActividad fechaActualizacion={ultimaActualizacion} />
         </>
     );
