@@ -3,6 +3,7 @@ import proyectoService from "../services/proyectoService";
 import FormProyecto from "./FormProyecto";
 import ProyectoCard from "./ProyectoCard";
 import RegistroActividad from "./RegistroActividad";
+import {Container, Form, Button, Card, Row, Col, FormLabel} from 'react-bootstrap';
 
 const ListaProyectos = () => {
 
@@ -44,36 +45,37 @@ const ListaProyectos = () => {
     );
 
     return (
-        <>
+        <Container>
             <FormProyecto agregarProyecto={manejarEnvio} />
 
-            <div className="buscador">
-                <h2>Buscar Proyectos:</h2>
-                <input 
+            <Form.Group className="buscador">
+                <Form.Label>Buscar Proyectos:</Form.Label>
+                <Form.Control 
                     type="text" 
                     placeholder="Buscar por título"
                     value={busqueda}
                     onChange={(evento) => setBusqueda(evento.target.value)}
                 />
-            </div>
+            </Form.Group>
 
             <section className="lista-proyectos">
                 <h2>Listado de Proyectos</h2>
-                <div className="contenedor-cards">
-                {
-                   proyectosFiltrados.map((proyecto) => (
-                        <ProyectoCard
-                           key={proyecto.id}
-                           proyecto={proyecto}
-                           eliminarProyecto={eliminarProyecto}
-                        />
-                    ))
-                }
-                </div>
+                <Row>
+                    {
+                    proyectosFiltrados.map((proyecto) => (
+                        <Col key={proyecto.id} md={4} sm={6} xs={12}>
+                            <ProyectoCard
+                            proyecto={proyecto}
+                            eliminarProyecto={eliminarProyecto}
+                            />
+                        </Col>
+                        ))
+                    }
+                </Row>
             </section>
 
             <RegistroActividad fechaActualizacion={ultimaActualizacion} />
-        </>
+        </Container>
     );
 
 };

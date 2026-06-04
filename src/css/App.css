@@ -140,12 +140,9 @@ button:hover {
     margin-bottom: 15px;
     font-size: 26px;
 }
-.contenedor-cards {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
-}
+
 .proyecto-card {
+    margin-bottom: 30px;
     background-color: var(--color-section);
     padding: 18px;
     border-radius: 10px;
@@ -239,11 +236,7 @@ footer {
     padding-right: 20px;
 }
 
-.contenedor-cards {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
-}
+
 
 .contenedor-detalles{
     background-color: var(--color-section);
