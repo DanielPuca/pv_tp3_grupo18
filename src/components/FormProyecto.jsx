@@ -1,4 +1,5 @@
 import {useState} from 'react';
+import { Form, Button } from "react-bootstrap";
 
 const FormProyecto = ({ agregarProyecto }) => {
     const [proyectoFormulario, setProyectoFormulario] = useState({
@@ -75,10 +76,10 @@ const FormProyecto = ({ agregarProyecto }) => {
 
     return (
         <div className="container-form">
-                <form className="form-Proyectos"onSubmit={manejarEnvio}>
+                <Form className="form-Proyectos"onSubmit={manejarEnvio}>
                      <div className="info-form">
                         <h2>Información del proyecto:</h2>
-                        <input 
+                        <Form.Control 
                             type="text" 
                             name="titulo"
                             placeholder = "Título del proyecto"
@@ -86,7 +87,7 @@ const FormProyecto = ({ agregarProyecto }) => {
                             onChange={manejarCambio}
                             required
                         />
-                        <input 
+                        <Form.Control 
                             type="text" 
                             name="categoria"
                             placeholder = "Categoría del proyecto"
@@ -94,7 +95,7 @@ const FormProyecto = ({ agregarProyecto }) => {
                             onChange={manejarCambio}
                             required
                         />
-                        <input 
+                        <Form.Control 
                             type="text" 
                             name="estado"
                             placeholder = "Estado del proyecto"
@@ -102,20 +103,21 @@ const FormProyecto = ({ agregarProyecto }) => {
                             onChange={manejarCambio}
                             required
                         />
-                        <label className="check-disponible">
-                            Disponible: 
-                            <input
+                      
+                            <Form.Check  className="check-disponible"
                                 type="checkbox"
+                                label="Disponible"
                                 name="disponible"
                                 checked={proyectoFormulario.disponible}
                                 onChange={manejarCambio}
                             /> 
-                        </label>
+                        
                     </div>
                     <div className="descripcion-form">
                         <h2>Descripción:</h2>
-                        <textarea
-                            type="text"
+                        <Form.Control
+                            as="textarea"
+                            rows= {4}
                             name="descripcion"
                             placeholder="Descripción del proyecto"
                             value={proyectoFormulario.descripcion}
@@ -124,7 +126,7 @@ const FormProyecto = ({ agregarProyecto }) => {
                     </div>
                     <div className="recursos-form">
                         <h2>Recursos:</h2>
-                        <input
+                        <Form.Control
                             type="text"
                             name="nombreRecurso"
                             placeholder="Nombre del recurso"
@@ -136,7 +138,7 @@ const FormProyecto = ({ agregarProyecto }) => {
                                 })
                             }
                         />
-                        <input
+                        <Form.Control
                             type="text"
                             name="urlRecurso"
                             placeholder="URL del recurso"
@@ -148,7 +150,7 @@ const FormProyecto = ({ agregarProyecto }) => {
                                 })
                             }
                         />
-                        <input
+                        <Form.Control
                             type="text"
                             name="estadoRecurso"
                             placeholder="Estado del recurso"
@@ -160,13 +162,13 @@ const FormProyecto = ({ agregarProyecto }) => {
                                 })
                             }
                         />
-                        <button type="button" onClick={agregarRecurso}>
+                        <Button type="button" onClick={agregarRecurso}>
                             +Agregar recurso
-                        </button>
+                        </Button>
                     </div>
                     <div className="equipo-form">
                         <h2>Equipo:</h2>
-                        <input
+                        <Form.Control
                             type="text"
                             name="nombreIntegrante"
                             placeholder="Nombre del integrante"
@@ -178,7 +180,7 @@ const FormProyecto = ({ agregarProyecto }) => {
                                 })
                             }
                         />
-                        <input
+                        <Form.Control
                             type="text"
                             name="rolIntegrante"
                             placeholder="Rol del integrante"
@@ -190,14 +192,14 @@ const FormProyecto = ({ agregarProyecto }) => {
                                 })
                             }
                         />
-                        <button type="button" onClick={agregarIntegrante}>
+                        <Button type="button" onClick={agregarIntegrante}>
                             +Agregar integrante
-                        </button>
+                        </Button>
                     </div>
-                    <button type="submit" className="boton-agregar">
+                    <Button type="submit" className="boton-agregar">
                         Agregar Proyecto
-                    </button>
-                </form>
+                    </Button>
+                </Form>
             </div>
     )
 }
