@@ -6,6 +6,7 @@ import Footer from './components/Footer';
 import Dashboard  from './views/Dashboard';
 import PerfilUsuario from './views/PerfilUsuario';
 import DetalleProyecto from './components/DetalleProyecto';
+import { UsuarioProvider } from './context/UsuarioContext';
 import './css/App.css';
 
 
@@ -13,6 +14,7 @@ const App = () => {
 
   
   return(
+    <UsuarioProvider>
     <div>
       <main>
         <Routes>
@@ -27,6 +29,7 @@ const App = () => {
       <Footer/>
 
     </div>
+    </UsuarioProvider>
   )
 }
 export default App;
