@@ -1,25 +1,29 @@
 const usuarioService = (() => {
+
     const usuarios = [
-        { usuario: "Daniel", contrasena: "1234" },
-        { usuario: "Antonella", contrasena: "1234" },
-        { usuario: "Lucas", contrasena: "1234" }
-    ];
-    const integrantes = [
-        { nombre: "Daniel Puca", rol: "Alumno", Institucion: "Facultatad de Ingeniería" },
-        { nombre: "Antonella Csongedy", rol: "Alumno", Institucion: "Facultad de Ingeniería" },
-        { nombre: "Lucas Velasquez", rol: "Alumno", Institucion: "Facultad de Ingeniería" },
-        { nombre: "Gustavo Sosa", rol: "Docente", Institucion: "Facultad de Ingeniería" }
-    ];
+    { id: 1, nombre: "Daniel Puca", dni: "12345678", rol: "Alumno", institucion: "Facultad de Ingeniería - UNJu", usuario: "Daniel", contrasena: "1234" },
+    { id: 2, nombre: "Antonella Csongedy", dni: "23456789", rol: "Alumno", institucion: "Facultad de Ingeniería - UNJu", usuario: "Antonella", contrasena: "1234" },
+    { id: 3, nombre: "Lucas Velasquez", dni: "34567890", rol: "Alumno", institucion: "Facultad de Ingeniería - UNJu", usuario: "Lucas", contrasena: "1234" }
+];
 
     const validarUsuario = (usuario, contrasena) => {
-        return usuarios.find(
-            (u) => u.usuario === usuario && u.contrasena === contrasena
-        );
+        return new Promise((resolve, reject) => {
+            setTimeout(() => {
+                const encontrado = usuarios.find(
+                    (u) => u.usuario === usuario && u.contrasena === contrasena
+                );
+                if (encontrado) {
+                    resolve(encontrado);
+                } else {
+                    reject(new Error('Usuario o contraseña incorrectos'));
+                }
+            }, 800);
+        });
     };
 
     return { 
-        validarUsuario, 
-        integrantes 
+        validarUsuario,
+        usuarios
     };
 })();
 
