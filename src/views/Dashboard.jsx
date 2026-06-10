@@ -1,9 +1,12 @@
 
-import {Container, Form, Button, Card, Row, Col} from 'react-bootstrap';
+import { Container, Card, Row, Col } from 'react-bootstrap';
 import Login from '../components/Login';
-
+import { useProyectos } from '../context/ProyectosContext';
 const Dashboard = () => {
-
+  const { proyectos, proyectosActivos } = useProyectos();
+  const proyectosFinalizados = proyectosActivos.filter(
+  (proyecto) => proyecto.estado?.toLowerCase() === 'finalizado'
+);
   return (
     <div style={{ backgroundColor: '#8fa1b1', minHeight: '100vh', display: 'flex', alignItems: 'center' }}>
             <Container>
@@ -18,17 +21,19 @@ const Dashboard = () => {
                         </p>
                         <Card className="mb-3" >
                             <Card.Body>
-                            <Card.Title>Total de proyectos 5</Card.Title>
+                            <Card.Title>Total de proyectos {proyectosActivos.length}</Card.Title>
                             </Card.Body>
                         </Card>
                         <Card className="mb-3">
                             <Card.Body>
-                            <Card.Title>Proyectos activos 3</Card.Title>
+                            <Card.Title>Proyectos activos {proyectosActivos.length}</Card.Title>
                             </Card.Body>
                         </Card>
                         <Card className="mb-3">
                             <Card.Body>
-                            <Card.Title>Proyectos Finalizados 3</Card.Title>
+                            <Card.Title>
+                              Proyectos Finalizados {proyectosFinalizados.length}
+                            </Card.Title>
                             </Card.Body>
                         </Card>
                     </Col>

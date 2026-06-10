@@ -12,11 +12,11 @@ const FormProyecto = ({ agregarProyecto }) => {
         equipo: []
     });
 
-    const [recursos, setRecursos] = useState([{
+    const [recursos, setRecursos] = useState({
         nombre: "",
         url: "",
         estado: ""
-    }]);
+    });
 
     const [integrante, setIntegrante] = useState({
         nombre: "",
@@ -37,7 +37,6 @@ const FormProyecto = ({ agregarProyecto }) => {
         evento.preventDefault();
 
         const nuevoProyecto = {
-            id: Date.now(),
             ...proyectoFormulario
         };
         agregarProyecto(nuevoProyecto);

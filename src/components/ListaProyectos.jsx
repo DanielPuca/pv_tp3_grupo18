@@ -1,15 +1,13 @@
-import { useEffect,useRef, useState } from "react";
-import proyectoService from "../services/proyectoService";
+import { useEffect, useRef, useState } from "react";
+import { useProyectos } from "../context/ProyectosContext";
 import FormProyecto from "./FormProyecto";
 import ProyectoCard from "./ProyectoCard";
 import RegistroActividad from "./RegistroActividad";
-import {Container, Form, Button, Card, Row, Col, FormLabel} from 'react-bootstrap';
+import {Container, Form, Row, Col} from 'react-bootstrap';
 
 const ListaProyectos = () => {
 
-    const [proyectos, setProyectos] = useState(
-        proyectoService.obtenerProyectos()
-    );
+    const { proyectos, agregarProyecto, eliminarProyecto: eliminarProyectoContexto } = useProyectos();
 
     const [busqueda, setBusqueda] = useState("");
     const [ultimaActualizacion, setUltimaActualizacion] = useState(null);
@@ -22,28 +20,20 @@ const ListaProyectos = () => {
         }
     }, [proyectos]);
    
-    const manejarEnvio = (nuevoProyecto) => {
-        proyectoService.agregarProyecto(nuevoProyecto);
-        huboModificacion.current = true;
-        setProyectos((proyectosPrevios) => [
-        ...proyectosPrevios,
-        nuevoProyecto
-        ]);
-    };  
+   const manejarEnvio = (nuevoProyecto) => {
+    huboModificacion.current = true;
+    agregarProyecto(nuevoProyecto);
+   };
 
-    const eliminarProyecto = (id) => {
-        
-        proyectoService.eliminarProyecto(id);
-        huboModificacion.current = true;
-        setProyectos((proyectosPrevios) =>
-            proyectosPrevios.filter((proyecto) => proyecto.id !== id)
-        );
-    };
+   const eliminarProyecto = (id) => {
+    huboModificacion.current = true;
+    eliminarProyectoContexto(id);
+   };
    
-    const proyectosFiltrados = proyectos.filter((proyecto) =>
-         proyecto.titulo.toLowerCase().includes(busqueda.toLowerCase())
-    );
-
+  const proyectosFiltrados = proyectos.filter((proyecto) =>
+  proyecto.eliminado !== true &&
+  (proyecto.titulo ?? "").toLowerCase().includes(busqueda.toLowerCase())
+);
     return (
         <Container>
             <FormProyecto agregarProyecto={manejarEnvio} />
