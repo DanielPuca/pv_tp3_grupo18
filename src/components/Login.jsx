@@ -16,7 +16,7 @@ const Login = () => {
     const [loading, setLoading] = useState(false);
     const [erroresCampo, setErroresCampo] = useState({});
 
-    const { guardarSesion } = useUsuario();// Context para guardar la sesión del usuario
+    const { guardarSesion } = useUsuario();
 
     const manejarCambio = (e) => {
         const { name, value } = e.target;
@@ -32,7 +32,9 @@ const Login = () => {
 
         if (!usuario.trim()) {
             errores.usuario = 'El usuario es obligatorio';
-        } 
+        } else if (usuario.length < 3) {
+            errores.usuario = 'El usuario debe tener al menos 3 caracteres';
+        }
         if (!contrasena.trim()) {
             errores.contrasena = 'La contraseña es obligatoria';
         } else if (contrasena.length < 4) {

@@ -1,33 +1,26 @@
-import { Routes, Route, Navigate } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
 import Header from './components/Header';
 import Nav from './components/Nav';
-import ListaProyectos from './components/ListaProyectos';
 import Footer from './components/Footer';
-import Dashboard  from './views/Dashboard';
-import PerfilUsuario from './views/PerfilUsuario';
-import DetalleProyecto from './components/DetalleProyecto';
 import { UsuarioProvider } from './context/UsuarioContext';
 import { ProyectosProvider } from './context/ProyectosContext';
-import RutaProtegida from './components/RutaProtegida';
 import './css/App.css';
-const App = () => {    
+
+
+const App = () => {
+
   return(
     <UsuarioProvider>
       <ProyectosProvider>
-        <div>
-          <main>
-            <Routes>
-              <Route path="/" element={<Navigate to="/dashboard" />} />
-              <Route path="/dashboard" element={<><Header /><Nav /><main><Dashboard /></main></>} />
-              <Route path="/proyectos" element={<RutaProtegida><><Header /><Nav /><main><ListaProyectos /></main></></RutaProtegida>} />
-              <Route path="/proyectos/:id" element={<RutaProtegida><><Header /><Nav /><main><DetalleProyecto /></main></></RutaProtegida>} />
-              <Route path="/perfil" element={<RutaProtegida><><Header /><Nav /><main><PerfilUsuario /></main></></RutaProtegida>} />
-           </Routes>
-         </main>
-         <Footer/>
-        </div>
+          <Header />
+          <Nav />
+            <main>
+              <Outlet />
+            </main>
+          <Footer />
       </ProyectosProvider>
     </UsuarioProvider>
   )
 }
+
 export default App;

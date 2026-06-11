@@ -6,8 +6,8 @@ const BotonLogout = () =>{
     const { cerrarSesion } = useUsuario();
 
     return(
-        <button onClick={cerrarSesion}>
-            Cerrar Sesion
+        <button className="btn btn-outline-light btn-sm" onClick={cerrarSesion}>
+            Cerrar Sesión
         </button>
     );
 
