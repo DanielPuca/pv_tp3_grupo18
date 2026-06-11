@@ -7,6 +7,7 @@ import Dashboard  from './views/Dashboard';
 import PerfilUsuario from './views/PerfilUsuario';
 import DetalleProyecto from './components/DetalleProyecto';
 import { UsuarioProvider } from './context/UsuarioContext';
+import { ProyectosProvider } from './context/ProyectosContext';
 import './css/App.css';
 
 
@@ -15,20 +16,22 @@ const App = () => {
   
   return(
     <UsuarioProvider>
-    <div>
-      <main>
-        <Routes>
-          <Route path="/" element={<Navigate to="/dashboard" />} />
-          <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/proyectos" element={<><Header /><Nav /><main><ListaProyectos /></main></>} />
-          <Route path="/proyectos/:id" element={<><Header /><Nav /><main><DetalleProyecto /></main></>} />
-          <Route path="/perfil" element={<><Header /><Nav /><main><PerfilUsuario /></main></>} />
-        </Routes>
-      </main>
+      <ProyectosProvider>
+        <div>
+          <main>
+            <Routes>
+              <Route path="/" element={<Navigate to="/dashboard" />} />
+              <Route path="/dashboard" element={<Dashboard />} />
+              <Route path="/proyectos" element={<><Header /><Nav /><main><ListaProyectos /></main></>} />
+              <Route path="/proyectos/:id" element={<><Header /><Nav /><main><DetalleProyecto /></main></>} />
+              <Route path="/perfil" element={<><Header /><Nav /><main><PerfilUsuario /></main></>} />
+           </Routes>
+         </main>
     
-      <Footer/>
+         <Footer/>
 
-    </div>
+        </div>
+      </ProyectosProvider>
     </UsuarioProvider>
   )
 }
