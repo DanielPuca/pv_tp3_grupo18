@@ -9,8 +9,11 @@ const UsuarioNav = () => {
 
     return (
         <>
-            <span>Bienvenido, {usuario.usuario}</span>
-            <BotonLogout />
+            <div className="d-flex align-items-center gap-2">
+                <span className="text-light">Bienvenido, {usuario.usuario}</span>
+                <BotonLogout />
+            </div>
+            
         </>
     );
 };
